@@ -14,7 +14,7 @@ def handle_link(link):
 
 
 def get_link():
-    buf = pyperclip.paste()
+    buf = pyperclip.paste().strip()
     c = re.compile(DOMAIN)
     if len(re.findall(c, buf)) == 1 and len(re.findall("rhash", buf)) == 0:
         return buf
@@ -22,7 +22,7 @@ def get_link():
         link = sys.argv[1]
     except IndexError:
         sys.exit("Usage main.py https://... or copy in the buffer")
-    return link
+    return link.strip()
 
 
 def main():
