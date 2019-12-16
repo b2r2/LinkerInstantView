@@ -4,16 +4,16 @@ import pyperclip
 from config import LINK_TEMPLATE as LT
 from config import DOMAIN
 
-def wrap_link(link):
-    return "[📃]({})".format(handle_link(link))
+def wrap_link(url):
+    return "[📃]({})".format(handle_link(url))
 
 
-def handle_link(link):
-    if link[-1] != '/':
-        link += '/'
-    link = re.sub(r':', '%3A', link)
-    link = re.sub(r'/', '%2F', link)
-    return LT.format(link)
+def handle_link(url):
+    if url[-1] != '/':
+        url += '/'
+    url = re.sub(r':', '%3A', url)
+    url = re.sub(r'/', '%2F', url)
+    return LT.format(url)
 
 
 def get_link():
@@ -30,9 +30,9 @@ def get_link():
 
 def main():
     raw = get_link()
-    link = wrap_link(raw)
-    print(link)
-    pyperclip.copy(link)
+    url = wrap_link(raw)
+    print(url)
+    pyperclip.copy(url)
 
 
 if __name__ == "__main__":
