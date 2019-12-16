@@ -4,6 +4,9 @@ import pyperclip
 from config import LINK_TEMPLATE as LT
 from config import DOMAIN
 
+def wrap_link(link):
+    return "[📃]({})".format(handle_link(link))
+
 
 def handle_link(link):
     if link[-1] != '/':
@@ -27,7 +30,7 @@ def get_link():
 
 def main():
     raw = get_link()
-    link = handle_link(raw)
+    link = wrap_link(raw)
     print(link)
     pyperclip.copy(link)
 
